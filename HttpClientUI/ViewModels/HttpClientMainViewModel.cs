@@ -147,7 +147,12 @@ namespace HttpClientUI.ViewModels
             }
             else
             {
-                StatusInfo = String.Format("状态: {0} {1},  耗时：{2} ms, 返回结果大小：{3}", (int)statusCode, statusCode.ToString(), timer.ElapsedMilliseconds, response.ContentLength);
+                long size = response.ContentLength;
+                if (size == -1)
+                {
+                    size = System.Text.Encoding.ASCII.GetBytes(m_bodyContent).LongLength;
+                }
+                StatusInfo = String.Format("状态: {0} {1},  耗时：{2} ms, 返回结果大小：{3}", (int)statusCode, statusCode.ToString(), timer.ElapsedMilliseconds, size);
             }
         }
 
