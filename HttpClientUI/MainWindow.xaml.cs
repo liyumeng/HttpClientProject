@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HttpClientUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HttpClientProject
+namespace HttpClientUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +24,12 @@ namespace HttpClientProject
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new HttpClientMainViewModel();
+        }
+
+        private void DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+
         }
     }
 }
